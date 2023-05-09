@@ -1,20 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Campdale Motion - Coming Soon</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rosario:wght@500&display=swap');
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A group of filmmakers based in London, turning original stories into independent films.">
+    <meta name="author" content="Campdale Motion">
+    <meta name="generator" content="Static">
+ <title>Campdale Motion - Coming Soon</title>
+ 
+    
 
-        /* Marquee styles */
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+	    /* Marquee styles */
         .marquee {
             --gap: 2rem;
             position: relative;
             display: flex;
-            overflow: hidden;
+            overflow: hidden !important;
             user-select: none;
             gap: var(--gap);
-            width: 90vh;
+   
         }
 
         .marquee__content {
@@ -99,51 +120,19 @@
         * {
             box-sizing: border-box;
         }
-
-        body {
-            padding: 0rem;
-            min-height: 100vh;
-            font-family: system-ui, sans-serif;
-            font-size: 1rem;
-            line-height: 1.5;
-            background-color: black;
-
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-block: 2rem 1rem;
-        }
-
-        h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            font-family: 'Rosario', sans-serif;
-        }
-
-        section {
-            margin-block: 3rem;
-        }
-
-        section > * + * {
-            margin-block-start: 0.5rem;
-        }
- h2{
-     color: white;
- }
-        img {
-            height: 82px;
-        }
     </style>
-</head>
-<body>
-<div className="main" style="display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;">
-<section>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="campdale.css" rel="stylesheet">
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+
+  <main class="px-3">
+  <section>
     <div class="marquee">
         <ul class="marquee__content">
             <img className="logo" src="/logo.png">
@@ -168,129 +157,22 @@
         </ul>
     </div>
 </section>
-    <h2>Projects</h2>
+<br>
+<br>
+    <h1>Projects</h1>
+    <h4>
+	      <a href="https://www.eventbrite.com/e/the-holy-yield-16mm-short-film-premiere-tickets-632259333687" class="text-white" target="_blank" rel="noopener noreferrer">The Holy Yield</a>
+		  </h4>
+		  
+		  
+  </main>
 
-<a href="/theholyyield"><h3>The Holy Yield</h3></a>
-
-    <div className="contact-form">
-    <h2>Get in touch</h2>
-    <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/xwkjnong" method="post">
-        <fieldset id="fs-frm-inputs">
-            <input type="text" name="name" id="full-name" placeholder="First and Last Names" required="">
-            <input type="email" name="_replyto" id="email-address" placeholder="Email address" required="">
-            <textarea rows="5" name="message" id="message" placeholder="Your message." required=""></textarea>
-            <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
-        </fieldset>
-        <input type="submit" value="Submit">
-    </form><style>/* reset */
-#fs-frm input,
-#fs-frm select,
-#fs-frm textarea,
-#fs-frm fieldset,
-#fs-frm optgroup,
-#fs-frm label,
-#fs-frm #card-element:disabled {
-    font-family: inherit;
-    font-size: 100%;
-    color: inherit;
-    border: none;
-    border-radius: 0;
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-#fs-frm label,
-#fs-frm legend,
-#fs-frm ::placeholder {
-    font-size: .825rem;
-    margin-bottom: .5rem;
-    padding-top: .2rem;
-    display: flex;
-    align-items: baseline;
-}
-
-/* border, padding, margin, width */
-#fs-frm input,
-#fs-frm select,
-#fs-frm textarea,
-#fs-frm #card-element {
-    border: 1px solid rgba(0,0,0,0.2);
-    background-color: rgba(255,255,255,0.9);
-    padding: .75em 1rem;
-    margin-bottom: 1.5rem;
-}
-#fs-frm input:focus,
-#fs-frm select:focus,
-#fs-frm textarea:focus {
-    background-color: white;
-    outline-style: solid;
-    outline-width: thin;
-    outline-color: gray;
-    outline-offset: -1px;
-}
-#fs-frm [type="text"],
-#fs-frm [type="email"] {
-    width: 100%;
-}
-#fs-frm [type="button"],
-#fs-frm [type="submit"],
-#fs-frm [type="reset"] {
-    width: auto;
-    cursor: pointer;
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-}
-#fs-frm [type="button"]:focus,
-#fs-frm [type="submit"]:focus,
-#fs-frm [type="reset"]:focus {
-    outline: none;
-}
-#fs-frm [type="submit"],
-#fs-frm [type="reset"] {
-    margin-bottom: 0;
-}
-#fs-frm select {
-    text-transform: none;
-}
-
-#fs-frm [type="checkbox"] {
-    -webkit-appearance: checkbox;
-    -moz-appearance: checkbox;
-    appearance: checkbox;
-    display: inline-block;
-    width: auto;
-    margin: 0 .5em 0 0 !important;
-}
-
-#fs-frm [type="radio"] {
-    -webkit-appearance: radio;
-    -moz-appearance: radio;
-    appearance: radio;
-}
-
-/* address, locale */
-#fs-frm fieldset.locale input[name="city"],
-#fs-frm fieldset.locale select[name="state"],
-#fs-frm fieldset.locale input[name="postal-code"] {
-    display: inline;
-}
-#fs-frm fieldset.locale input[name="city"] {
-    width: 52%;
-}
-#fs-frm fieldset.locale select[name="state"],
-#fs-frm fieldset.locale input[name="postal-code"] {
-    width: 20%;
-}
-#fs-frm fieldset.locale input[name="city"],
-#fs-frm fieldset.locale select[name="state"] {
-    margin-right: 3%;
-}
-</style>
-    </div>
+  <footer class="mt-auto text-white-50">
+    <p><a href="mailto:hello@campdale.net" class="text-white">Get in touch.</a></p>
+  </footer>
 </div>
-</body>
+
+
+    
+  </body>
 </html>

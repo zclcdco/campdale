@@ -60,9 +60,6 @@ body {
   user-select: none;
   gap: var(--gap);
   margin-top:  40px;
-  img {
-	height: 75px;
-  }
   mask-image: linear-gradient(
     var(--mask-direction, to right),
     hsl(0 0% 0% / 0),
@@ -71,7 +68,9 @@ body {
     hsl(0 0% 0% / 0)
   );
 }
-
+div.marquee>img {
+height: 75px;
+}
 .marquee__group {
   flex-shrink: 0;
   display: flex;

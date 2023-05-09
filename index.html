@@ -14,6 +14,33 @@
 <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+	:root {
+  --size: clamp(10rem, 1rem + 40vmin, 30rem);
+  --gap: calc(var(--size) / 14);
+  --duration: 45s;
+  --scroll-start: 0;
+  --scroll-end: calc(-100% - var(--gap));
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+   align-content: center;
+  overflow: hidden;
+  gap: var(--gap);
+  width: 100%;
+  min-height: 100vh;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+	
+	
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -27,99 +54,104 @@
           font-size: 3.5rem;
         }
       }
-	    /* Marquee styles */
-        .marquee {
-            --gap: 2rem;
-            position: relative;
-            display: flex;
-            overflow: hidden !important;
-            user-select: none;
-            gap: var(--gap);
-			height: 75px;
-        }
+	   .marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+  mask-image: linear-gradient(
+    var(--mask-direction, to right),
+    hsl(0 0% 0% / 0),
+    hsl(0 0% 0% / 1) 20%,
+    hsl(0 0% 0% / 1) 80%,
+    hsl(0 0% 0% / 0)
+  );
+}
 
-        .marquee__content {
-            flex-shrink: 0;
-            display: flex;
-            justify-content: space-around;
-            gap: var(--gap);
-            min-width: 100%;
-        }
+.marquee__group {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--gap);
+  min-width: 100%;
+  animation: scroll-x var(--duration) linear infinite;
+}
 
-        @keyframes scroll {
-            from {
-                transform: translateX(0);
-            }
-            to {
-                transform: translateX(calc(-100% - var(--gap)));
-            }
-        }
+@media (prefers-reduced-motion: reduce) {
+  .marquee__group {
+    animation-play-state: paused;
+  }
+}
 
-        /* Pause animation when reduced-motion is set */
-        @media (prefers-reduced-motion: reduce) {
-            .marquee__content {
-                animation-play-state: paused !important;
-            }
-        }
+.marquee--vertical {
+  --mask-direction: to bottom;
+}
 
-        /* Enable animation */
-      .marquee__content {
-            animation: scroll 30s linear infinite;
-        }
+.marquee--vertical,
+.marquee--vertical .marquee__group {
+  flex-direction: column;
+}
 
-        /* Reverse animation */
-        .marquee--reverse .marquee__content {
-            animation-direction: reverse;
-        }
+.marquee--vertical .marquee__group {
+  animation-name: scroll-y;
+}
 
-        /* Pause on hover */
-        .marquee--hover-pause:hover .marquee__content {
-            animation-play-state: paused;
-        }
+.marquee--reverse .marquee__group {
+  animation-direction: reverse;
+  animation-delay: -3s;
+}
 
-        /* Attempt to size parent based on content. Keep in mind that the parent width is equal to both content containers that stretch to fill the parent. */
-        .marquee--fit-content {
-            max-width: fit-content;
-        }
+@keyframes scroll-x {
+  from {
+    transform: translateX(var(--scroll-start));
+  }
+  to {
+    transform: translateX(var(--scroll-end));
+  }
+}
 
-        /* A fit-content sizing fix: Absolute position the duplicate container. This will set the size of the parent wrapper to a single child container. Shout out to Olavi's article that had this solution 👏 @link: https://olavihaapala.fi/2021/02/23/modern-marquee.html  */
-        .marquee--pos-absolute .marquee__content:last-child {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+@keyframes scroll-y {
+  from {
+    transform: translateY(var(--scroll-start));
+  }
+  to {
+    transform: translateY(var(--scroll-end));
+  }
+}
 
-        /* Enable position absolute animation on the duplicate content (last-child) */
-        .enable-animation .marquee--pos-absolute .marquee__content:last-child {
-            animation-name: scroll-abs;
-        }
+/* Element styles */
+.marquee svg {
+  display: grid;
+  place-items: center;
+  width: var(--size);
+  fill: var(--color-text);
+  background: var(--color-bg-accent);
+  aspect-ratio: 16/9;
+  padding: calc(var(--size) / 10);
+  border-radius: 0.5rem;
+}
 
-        @keyframes scroll-abs {
-            from {
-                transform: translateX(calc(100% + var(--gap)));
-            }
-            to {
-                transform: translateX(0);
-            }
-        }
+.marquee--vertical svg {
+  aspect-ratio: 1;
+  width: calc(var(--size) / 1.5);
+  padding: calc(var(--size) / 6);
+}
 
-        /* Other page demo styles */
-        .marquee__content > * {
-            flex: 0 0 auto;
-            color: white;
-            margin: 2px;
-            padding: 1rem 0rem;
-            border-radius: 0.25rem;
-            text-align: center;
-        }
+/* Parent wrapper */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  margin: auto;
+  max-width: 100vw;
+}
 
-        .marquee {
-            border: 2px solid lightgray;
-        }
+.wrapper--vertical {
+  flex-direction: row;
+  height: 100vh;
+}
 
-        * {
-            box-sizing: border-box;
-        }
     </style>
 
     
@@ -132,10 +164,10 @@
 
 
   <main class="px-3">
-  <section>
-    <div class="marquee">
-        <ul class="marquee__content">
-            <img className="logo" src="/logo.png">
+  <article class="wrapper">
+  <div class="marquee">
+    <div class="marquee__group">
+       <img className="logo" src="/logo.png">
             <img src="/p.png">
             <h2>COMING SOON</h2>
             <img src="/p.png">
@@ -143,20 +175,21 @@
             <img src="/p.png">
             <h2>COMING SOON</h2>
             <img src="/p.png">
-        </ul>
-
-        <ul aria-hidden="true" class="marquee__content">
-            <img className="logo" src="/logo.png">
-            <img src="/p.png">
-            <h2>COMING SOON</h2>
-            <img src="/p.png">
-            <img className="logo" src="/logo.png">
-            <img src="/p.png">
-            <h2>COMING SOON</h2>
-            <img src="/p.png">
-        </ul>
     </div>
-</section>
+
+    <div aria-hidden="true" class="marquee__group">
+      <img className="logo" src="/logo.png">
+            <img src="/p.png">
+            <h2>COMING SOON</h2>
+            <img src="/p.png">
+            <img className="logo" src="/logo.png">
+            <img src="/p.png">
+            <h2>COMING SOON</h2>
+            <img src="/p.png">
+    </div>
+  </div>
+  </article>
+  
 <br>
 <br>
     <h1>Projects</h1>

@@ -155,6 +155,26 @@ height: 55px;
   height: 100vh;
 }
 
+/* Form styles */
+
+form, input, label, p {
+    color: black !important;
+}
+.form-floating>.form-control,
+.form-floating>.form-control-plaintext {
+  padding: 0rem 0.75rem;
+}
+
+.form-floating>.form-control,
+.form-floating>.form-control-plaintext,
+.form-floating>.form-select {
+  height: calc(2.5rem + 2px);
+  line-height: 1;
+}
+
+.form-floating>label {
+  padding: 0.5rem 0.75rem;
+}
     </style>
 
     
@@ -195,16 +215,62 @@ height: 55px;
   
 <br>
 <br>
-    <h1>Projects</h1>
+    <h1 class="fw-bolder">Projects</h1>
     <h4>
 	      <a href="https://www.eventbrite.com/e/the-holy-yield-16mm-short-film-premiere-tickets-632259333687" class="text-white" target="_blank" rel="noopener noreferrer">The Holy Yield</a>
 		  </h4>
 		  
+		  <h3>Get in touch!</h3>
+		  
+		  
+		   <form id="contactForm" action="https://formspree.io/f/xwkjnong"
+  method="POST">
+
+                <!-- Name Input -->
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-sm" id="name" type="text" id="full-name" placeholder="Name" data-sb-validations="required" required="" />
+                  <label for="name">Name</label>
+                  <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
+                </div>
+
+
+                <!-- Email Input -->
+                <div class="form-floating mb-3">
+                  <input class="form-control" name="_replyto" id="email-address" required="" type="email" placeholder="Email Address" data-sb-validations="required,email" />
+                  <label for="emailAddress">Email Address</label>
+                  <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
+                  <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+                </div>
+
+                <!-- Message Input -->
+                <div class="form-floating mb-3">
+                  <textarea class="form-control" name="message" id="message" required="" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
+                  <label for="message">Message</label>
+                  <div class="invalid-feedback" data-sb-feedback="message:required">Message is required.</div>
+                </div>
+
+                <!-- Submit success message -->
+                <div class="d-none" id="submitSuccessMessage">
+                  <div class="text-center mb-3">
+                    <div class="fw-bolder">Form submission successful!</div>
+                  </div>
+                </div>
+
+                <!-- Submit error message -->
+                <div class="d-none" id="submitErrorMessage">
+                  <div class="text-center text-danger mb-3">Error sending message!</div>
+                </div>
+
+                <!-- Submit button -->
+                <div class="d-grid">
+                  <button class="btn btn-primary" id="submitButton" type="submit">Submit</button>
+                </div>
+              </form>
 		  
   </main>
 
   <footer class="mt-auto text-white-50">
-    <p><a href="mailto:hello@campdale.net" class="text-white">Get in touch.</a></p>
+    <p>© 2023 Campdale Motion</p>
   </footer>
 </div>
 
